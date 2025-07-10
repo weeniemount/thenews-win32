@@ -1,0 +1,14 @@
+// resource.h
+#ifndef RESOURCE_H
+#define RESOURCE_H
+
+#define IDR_ICON 101
+#define IDR_JOHNPHONE_IMAGE 102
+#define IDR_ANSWER_ICON 103
+#define IDR_SUNNY_ICON 104
+#define IDR_REDESIGN_IMAGE 105
+#define IDR_ROADBLOCKS_IMAGE 106
+#define IDR_THENEWS_IMAGE 107
+#define IDR_LINKER_IMAGE 108
+
+#endif // RESOURCE_H

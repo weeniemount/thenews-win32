@@ -1,0 +1,8 @@
+src/*.obj
+src/*.exe
+src/resource/*.res
+src/resource/*.obj
+src/*.exp
+src/*.dll
+src/*.lib
+src/notifications/*.obj
