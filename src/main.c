@@ -175,7 +175,7 @@ int show_random_toast() {
     // Show the randomly selected toast
     hr = poptoast(toast_notifications[random_index]);
     
-    Sleep(1000);
+    Sleep(1);
     toast_cleanup();
     
     return FAILED(hr);
@@ -188,7 +188,7 @@ int show_toast_and_exit(const wchar_t* toast_xml) {
 	if (FAILED(hr)) return 1;
 	toast_set_activation_callback(my_activation_callback);
 	hr = poptoast(toast_xml);
-	Sleep(1000);
+	Sleep(1);
 	toast_cleanup();
 	return FAILED(hr);
 }
