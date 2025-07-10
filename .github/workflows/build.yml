@@ -12,8 +12,8 @@ jobs:
     runs-on: windows-2022
     strategy:
       matrix:
-        platform: x64
-        vsversion: '2022'
+        platform: [x64]
+        vsversion: ['2022']
 
     steps:
     - uses: actions/checkout@v4
