@@ -20,3 +20,6 @@ int main() {
 ```
 
 then just compile with whatever compiler you use and use the .a or the .lib provided in the download!
+
+# building it yourself
+if you want to build it yourself, you have to install visual studio 2022. when you install it, use the "x86/x64 Native Command Prompt for VS 2022". this command prompt has the compiling tools you need. then just run build.bat for an exe or buildDLL.bat if you want a dll.
