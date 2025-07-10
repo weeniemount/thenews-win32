@@ -1,4 +1,4 @@
-name: Build Windows Applications
+name: build thenews.exe/.dll (x64)
 
 on:
   workflow_dispatch:
