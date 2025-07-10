@@ -224,6 +224,7 @@ void show_help() {
 	printf("  roadblocks       - Show roadblocks notification\n");
 	printf("  linker           - Show news about linker going all in on black, loses it all in one night\n");
 	printf("  all              - Show all notifications\n\n");
+	printf("  random              - Randomize through all notifications\n\n");
 	printf("If no command is specified, shows a random notification.\n");
 }
 
@@ -383,6 +384,8 @@ int main(int argc, char** argv) {
 			return show_toast_and_exit(roadblocks);
 		} else if (strcmp(argv[1], "linker") == 0) {
 			return show_toast_and_exit(linker);
+		} else if (strcmp(argv[1], "random") == 0) {
+			return show_random_toast();
 		} else if (strcmp(argv[1], "all") == 0) {
 			return show_all_toasts();
 		} else {
