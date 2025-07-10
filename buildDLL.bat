@@ -30,7 +30,7 @@ copy src\thenews.lib build\thenews.lib >nul
 copy src\thenews.exp build\thenews.exp >nul
 copy src\thenews.h build\thenews.h >nul
 copy src\dll\thenews.def build\thenews.def >nul
-copy src\dll\thenews.a build\thenews.a >nul
+copy src\dll\libthenews.a build\libthenews.a >nul
 if errorlevel 1 goto :error
 
 echo.
