@@ -8,7 +8,7 @@ download it from the [releases](https://github.com/weeniemount/thenews-win32/rel
 you can use the standalone exe or the dll. to use the dll look at the section below.
 
 # how 2 use as a dll in c/c++
-download the dll from the respective page and then just do this:
+download the dll from the respective page and then include the "thenews.h" file. then you could do something like this:
 ```c
 #include "thenews.h"
 
