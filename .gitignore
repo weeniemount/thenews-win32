@@ -6,3 +6,4 @@ src/*.exp
 src/*.dll
 src/*.lib
 src/notifications/*.obj
+build/*.*
