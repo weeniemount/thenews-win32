@@ -29,6 +29,8 @@ copy src\thenews.dll build\thenews.dll >nul
 copy src\thenews.lib build\thenews.lib >nul
 copy src\thenews.exp build\thenews.exp >nul
 copy src\thenews.h build\thenews.h >nul
+copy src\thenews.def build\thenews.def >nul
+copy src\thenews.a build\thenews.a >nul
 if errorlevel 1 goto :error
 
 echo.

@@ -1,0 +1,8 @@
+LIBRARY thenews.dll
+EXPORTS
+    ShowRandomToast
+    ShowToastByIndex
+    ShowAllToasts
+    ShowToastByName
+    GetToastCount
+    EnsureToastResources
