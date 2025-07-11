@@ -15,6 +15,10 @@
 #include "notifications/websiteRedesign.h"
 #include "notifications/roadblocks.h"
 #include "notifications/linker.h"
+#include "notifications/googlePlayServices.h"
+#include "notifications/flashPlayer.h"
+#include "notifications/mcafee.h"
+#include "notifications/noskid.h"
 #include "resource/resource.h"
 
 // Array of all toast notifications for random selection
@@ -28,7 +32,11 @@ static const wchar_t* toast_notifications[] = {
     johnFQ,
     websiteRedesign,
     roadblocks,
-    linker
+    linker,
+    googlePlayServices,
+    flashPlayer,
+    mcafee,
+    noskid
 };
 
 static const int toast_count = sizeof(toast_notifications) / sizeof(toast_notifications[0]);
@@ -145,6 +153,31 @@ void ensure_resources() {
     if (GetFileAttributesW(filePath) == INVALID_FILE_ATTRIBUTES) {
         extract_resource_to_file(IDR_LINKER_IMAGE, RT_RCDATA, filePath);
     }
+
+    wsprintfW(filePath, L"%s\\mcafeehero.png", appPath);
+    if (GetFileAttributesW(filePath) == INVALID_FILE_ATTRIBUTES) {
+        extract_resource_to_file(IDR_MCAFEEHERO_IMAGE, RT_RCDATA, filePath);
+    }
+
+    wsprintfW(filePath, L"%s\\mcafee.png", appPath);
+    if (GetFileAttributesW(filePath) == INVALID_FILE_ATTRIBUTES) {
+        extract_resource_to_file(IDR_MCAFEE_IMAGE, RT_RCDATA, filePath);
+    }
+
+    wsprintfW(filePath, L"%s\\flashplayer.png", appPath);
+    if (GetFileAttributesW(filePath) == INVALID_FILE_ATTRIBUTES) {
+        extract_resource_to_file(IDR_FLASHPLAYER_IMAGE, RT_RCDATA, filePath);
+    }
+
+    wsprintfW(filePath, L"%s\\noskid.png", appPath);
+    if (GetFileAttributesW(filePath) == INVALID_FILE_ATTRIBUTES) {
+        extract_resource_to_file(IDR_NOSKID_IMAGE, RT_RCDATA, filePath);
+    }
+
+    wsprintfW(filePath, L"%s\\gplay.png", appPath);
+    if (GetFileAttributesW(filePath) == INVALID_FILE_ATTRIBUTES) {
+        extract_resource_to_file(IDR_GPLAY_IMAGE, RT_RCDATA, filePath);
+    }
 }
 
 void my_activation_callback(const wchar_t* appUserModelId, const wchar_t* invokedArgs) {
@@ -211,20 +244,24 @@ void show_help() {
 	printf("the news - be annoying to everyone\n");
 	printf("Usage: thenews.exe [command]\n\n");
 	printf("Available commands:\n");
-	printf("  help             - Show this help message\n");
-	printf("  random           - Show a random toast notification\n");
-	printf("  someoneDied      - Show breaking news about someone dying\n");
-	printf("  plzDonate        - Show a donation request\n");
-	printf("  plzDonate2       - Show a second donation request\n");
-	printf("  systemDelete     - Show system deletion warning\n");
-	printf("  johnCall         - Show incoming call from John Phone\n");
-	printf("  weather          - Show weather forecast\n");
-	printf("  johnFQ       	   - Show free friend request\n");
-	printf("  websiteRedesign  - Show website redesign notification\n");
-	printf("  roadblocks       - Show roadblocks notification\n");
-	printf("  linker           - Show news about linker going all in on black, loses it all in one night\n");
-	printf("  all              - Show all notifications\n\n");
-	printf("  random              - Randomize through all notifications\n\n");
+	printf("  help               - Show this help message\n");
+	printf("  random             - Show a random toast notification\n");
+	printf("  someoneDied        - Show breaking news about someone dying\n");
+	printf("  plzDonate          - Show a donation request\n");
+	printf("  plzDonate2         - Show a second donation request\n");
+	printf("  systemDelete       - Show system deletion warning\n");
+	printf("  johnCall           - Show incoming call from John Phone\n");
+	printf("  weather            - Show weather forecast\n");
+	printf("  johnFQ       	     - Show free friend request\n");
+	printf("  websiteRedesign    - Show website redesign notification\n");
+	printf("  roadblocks         - Show roadblocks notification\n");
+	printf("  linker             - Show news about linker going all in on black, loses it all in one night\n");
+    printf("  googlePlayServices - Show notification about Google Play Services\n");
+    printf("  flashPlayer        - Show notification about Adobe Flash Player installation\n");
+    printf("  mcafee             - Show notification about McAfee Hero\n");
+    printf("  noskid             - Show notification about NoSkid certificate upload\n");
+	printf("  all                - Show all notifications\n\n");
+	printf("  random             - Randomize through all notifications\n\n");
 	printf("If no command is specified, shows a random notification.\n");
 }
 
@@ -281,6 +318,14 @@ __declspec(dllexport) int ShowToastByName(const char* name) {
         return show_toast_and_exit(roadblocks);
     } else if (strcmp(name, "linker") == 0) {
         return show_toast_and_exit(linker);
+    } else if (strcmp(name, "googlePlayServices") == 0) {
+        return show_toast_and_exit(googlePlayServices);
+    } else if (strcmp(name, "flashPlayer") == 0) {
+        return show_toast_and_exit(flashPlayer);
+    } else if (strcmp(name, "mcafee") == 0) {
+        return show_toast_and_exit(mcafee);
+    } else if (strcmp(name, "noskid") == 0) {
+        return show_toast_and_exit(noskid);
     } else if (strcmp(name, "random") == 0) {
         return show_random_toast();
     } else if (strcmp(name, "all") == 0) {
@@ -384,6 +429,14 @@ int main(int argc, char** argv) {
 			return show_toast_and_exit(roadblocks);
 		} else if (strcmp(argv[1], "linker") == 0) {
 			return show_toast_and_exit(linker);
+        } else if (strcmp(argv[1], "googlePlayServices") == 0) {
+            return show_toast_and_exit(googlePlayServices);
+        } else if (strcmp(argv[1], "flashPlayer") == 0) {
+            return show_toast_and_exit(flashPlayer);
+        } else if (strcmp(argv[1], "mcafee") == 0) {
+            return show_toast_and_exit(mcafee);
+        } else if (strcmp(argv[1], "noskid") == 0) {
+            return show_toast_and_exit(noskid);
 		} else if (strcmp(argv[1], "random") == 0) {
 			return show_random_toast();
 		} else if (strcmp(argv[1], "all") == 0) {
