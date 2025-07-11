@@ -19,7 +19,7 @@ if errorlevel 1 goto :error
 cd ..
 
 echo Compiling source...
-cl /MT /DUNICODE /D_UNICODE /nologo main.c toast.c notifications\*.c ^
+cl /MT /DUNICODE /D_UNICODE /nologo main.c toast.c ^
 	/link resource\resource.res shell32.lib user32.lib advapi32.lib ole32.lib oleaut32.lib runtimeobject.lib /out:thenews.exe
 if errorlevel 1 goto :error
 

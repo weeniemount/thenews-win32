@@ -2,6 +2,45 @@
 #define WEATHER_H
 
 #include <wchar.h>
-extern const wchar_t weather[];
+const wchar_t weather[] =
+L"<toast>\r\n"
+L"  <visual>\r\n"
+L"    <binding template=\"ToastGeneric\">\r\n"
+L"      <text><![CDATA[BREAKING NEWS! the earth is on fire lmfao]]></text>\r\n"
+L"      <group>\r\n"
+L"        <subgroup hint-weight=\"1\">\r\n"
+L"          <text hint-align=\"center\">Mon</text>\r\n"
+L"          <image hint-removeMargin=\"true\" src=\"file:///%TEMP%/thenews/sunny.png\"/>\r\n"
+L"          <text hint-align=\"center\">63&#176;</text>\r\n"
+L"          <text hint-align=\"center\" hint-style=\"captionSubtle\">42&#176;</text>\r\n"
+L"        </subgroup>\r\n"
+L"        <subgroup hint-weight=\"1\">\r\n"
+L"          <text hint-align=\"center\">Tue</text>\r\n"
+L"          <image hint-removeMargin=\"true\" src=\"file:///%TEMP%/thenews/sunny.png\"/>\r\n"
+L"          <text hint-align=\"center\">78&#176;</text>\r\n"
+L"          <text hint-align=\"center\" hint-style=\"captionSubtle\">60&#176;</text>\r\n"
+L"        </subgroup>\r\n"
+L"        <subgroup hint-weight=\"1\">\r\n"
+L"          <text hint-align=\"center\">Wed</text>\r\n"
+L"          <image hint-removeMargin=\"true\" src=\"file:///%TEMP%/thenews/sunny.png\"/>\r\n"
+L"          <text hint-align=\"center\">96&#176;</text>\r\n"
+L"          <text hint-align=\"center\" hint-style=\"captionSubtle\">76&#176;</text>\r\n"
+L"        </subgroup>\r\n"
+L"        <subgroup hint-weight=\"1\">\r\n"
+L"          <text hint-align=\"center\">Thu</text>\r\n"
+L"          <image hint-removeMargin=\"true\" src=\"file:///%TEMP%/thenews/sunny.png\"/>\r\n"
+L"          <text hint-align=\"center\">132&#176;</text>\r\n"
+L"          <text hint-align=\"center\" hint-style=\"captionSubtle\">89&#176;</text>\r\n"
+L"        </subgroup>\r\n"
+L"        <subgroup hint-weight=\"1\">\r\n"
+L"          <text hint-align=\"center\">Fri</text>\r\n"
+L"          <image hint-removeMargin=\"true\" src=\"file:///%TEMP%/thenews/sunny.png\"/>\r\n"
+L"          <text hint-align=\"center\">244&#176;</text>\r\n"
+L"          <text hint-align=\"center\" hint-style=\"captionSubtle\">120&#176;</text>\r\n"
+L"        </subgroup>\r\n"
+L"      </group>\r\n"
+L"    </binding>\r\n"
+L"  </visual>\r\n"
+L"</toast>\r\n";
 
 #endif // WEATHER_H
