@@ -1,21 +1,21 @@
 #include "resource.h"
 
 // Application icon
-IDI_APP ICON "icon.ico"
+IDI_APP ICON "assets/icon.ico"
 
 // Notification images
-IDR_JOHNPHONE_IMAGE RCDATA "johnphone.jpg"
-IDR_ANSWER_ICON RCDATA "answer.png"
-IDR_SUNNY_ICON RCDATA "sunny.png"
-IDR_REDESIGN_IMAGE RCDATA "redesign.png"
-IDR_ROADBLOCKS_IMAGE RCDATA "roadblocks.gif"
-IDR_THENEWS_IMAGE RCDATA "icon.png"
-IDR_LINKER_IMAGE RCDATA "linker.png"
-IDR_MCAFEE_IMAGE RCDATA "mcafee.png"
-IDR_MCAFEEHERO_IMAGE RCDATA "mcafeehero.png"
-IDR_GPLAY_IMAGE RCDATA "gplay.png"
-IDR_NOSKID_IMAGE RCDATA "noskid.png"
-IDR_FLASHPLAYER_IMAGE RCDATA "flashplayer.png"
+IDR_JOHNPHONE_IMAGE RCDATA "assets/johnphone.jpg"
+IDR_ANSWER_ICON RCDATA "assets/answer.png"
+IDR_SUNNY_ICON RCDATA "assets/sunny.png"
+IDR_REDESIGN_IMAGE RCDATA "assets/redesign.png"
+IDR_ROADBLOCKS_IMAGE RCDATA "assets/roadblocks.gif"
+IDR_THENEWS_IMAGE RCDATA "assets/icon.png"
+IDR_LINKER_IMAGE RCDATA "assets/linker.png"
+IDR_MCAFEE_IMAGE RCDATA "assets/mcafee.png"
+IDR_MCAFEEHERO_IMAGE RCDATA "assets/mcafeehero.png"
+IDR_GPLAY_IMAGE RCDATA "assets/gplay.png"
+IDR_NOSKID_IMAGE RCDATA "assets/noskid.png"
+IDR_FLASHPLAYER_IMAGE RCDATA "assets/flashplayer.png"
 
 // Version information
 1 VERSIONINFO
