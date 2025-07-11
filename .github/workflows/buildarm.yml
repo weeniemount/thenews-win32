@@ -1,0 +1,56 @@
+name: build thenews.exe/.dll (ARM64)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: windows-2022
+    strategy:
+      matrix:
+        platform: [arm64]
+        vsversion: ['2022']
+
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Add MSBuild to PATH
+      uses: microsoft/setup-msbuild@v1.3.1
+      
+    - name: Setup Developer Command Prompt
+      uses: ilammy/msvc-dev-cmd@v1
+      with:
+        arch: ${{ matrix.platform }}
+        vsversion: ${{ matrix.vsversion }}
+        
+    - name: Build Executable ARM64
+      run: |
+        call build.bat
+      shell: cmd
+      
+    - name: Build DLL ARM64
+      run: |
+        call buildDLL.bat
+      shell: cmd
+        
+    - name: Upload Executable Artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: thenews-${{ matrix.platform }}-exe
+        path: build/thenews.exe
+        
+    - name: Upload DLL Artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: thenews-${{ matrix.platform }}-dll
+        path: |
+          build/thenews.dll
+          build/thenews.lib
+          build/thenews.exp
+          build/thenews.h
+          build/thenews.def
+          build/libthenews.a 
