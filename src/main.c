@@ -40,6 +40,7 @@ static const wchar_t* toast_notifications[] = {
 };
 
 static const int toast_count = sizeof(toast_notifications) / sizeof(toast_notifications[0]);
+static HMODULE g_hModule = NULL;
 
 #ifdef BUILD_DLL
 // DLL Export definitions
@@ -66,12 +67,12 @@ __declspec(dllexport) void CALLBACK RunDLL32_ShowToastByIndex(HWND hwnd, HINSTAN
 #endif
 
 BOOL extract_resource_to_file(WORD resourceId, LPCWSTR resourceType, const wchar_t* outputPath) {
-    HRSRC hResource = FindResourceW(NULL, MAKEINTRESOURCEW(resourceId), resourceType);
+    HRSRC hResource = FindResourceW(g_hModule, MAKEINTRESOURCEW(resourceId), resourceType);
     if (!hResource) {
         return FALSE;
     }
     
-    HGLOBAL hMemory = LoadResource(NULL, hResource);
+    HGLOBAL hMemory = LoadResource(g_hModule, hResource);
     if (!hMemory) {
         return FALSE;
     }
@@ -81,7 +82,7 @@ BOOL extract_resource_to_file(WORD resourceId, LPCWSTR resourceType, const wchar
         return FALSE;
     }
     
-    DWORD size = SizeofResource(NULL, hResource);
+    DWORD size = SizeofResource(g_hModule, hResource);
     if (size == 0) {
         return FALSE;
     }
@@ -353,6 +354,7 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserv
     switch (ul_reason_for_call) {
         case DLL_PROCESS_ATTACH:
             // Initialize when DLL is loaded
+            g_hModule = hModule;
             srand((unsigned int)time(NULL));
             break;
         case DLL_THREAD_ATTACH:
