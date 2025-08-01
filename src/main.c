@@ -55,6 +55,34 @@ static const wchar_t* toast_notifications[] = {
     noskid
 };
 
+static const wchar_t* toast_notifications_PAGE1[] = {
+    someoneDied,
+    plzDonate,
+    plzDonate2,
+    systemDelete,
+    johnCall,
+    weather,
+    johnFQ,
+    websiteRedesign,
+    roadblocks,
+    linker
+};
+
+static const wchar_t* toast_notifications_PAGE2[] = {
+    mazeNotification,
+    femboyLabs,
+    bussinIndustries,
+    baseballDiscord,
+    johnPorkCall,
+    textMessageValve,
+    hNotification,
+    johnPhone,
+    googlePlayServices,
+    flashPlayer,
+    mcafee,
+    noskid
+};
+
 static const int toast_count = sizeof(toast_notifications) / sizeof(toast_notifications[0]);
 static HMODULE g_hModule = NULL;
 
@@ -334,6 +362,52 @@ void show_help() {
 	printf("If no command is specified, shows a random notification.\n");
 }
 
+int show_random_page1_toast() {
+    srand((unsigned int)time(NULL));
+    int count = sizeof(toast_notifications_PAGE1) / sizeof(toast_notifications_PAGE1[0]);
+    int random_index = rand() % count;
+
+    ensure_resources();
+    RegSetKeyValueW(HKEY_LOCAL_MACHINE, L"SOFTWARE\\Classes\\AppUserModelId\\theNewsWin32", L"IconUri", REG_EXPAND_SZ, L"%TEMP%\\thenews\\icon.png", (wcslen(L"%TEMP%\\thenews\\icon.png") + 1) * sizeof(wchar_t));
+    RegSetKeyValueW(HKEY_CURRENT_USER, L"SOFTWARE\\Classes\\AppUserModelId\\theNewsWin32", L"IconUri", REG_EXPAND_SZ, L"%TEMP%\\thenews\\icon.png", (wcslen(L"%TEMP%\\thenews\\icon.png") + 1) * sizeof(wchar_t));
+
+    toast_setup_icon(L"%TEMP%\\thenews\\icon.png");
+    HRESULT hr = toast_init(L"theNewsWin32", L"the news", L"%TEMP%\\thenews\\icon.png");
+    if (FAILED(hr)) return 1;
+
+    toast_set_activation_callback(my_activation_callback);
+
+    hr = poptoast(toast_notifications_PAGE1[random_index]);
+
+    Sleep(1);
+    toast_cleanup();
+
+    return FAILED(hr);
+}
+
+int show_random_page2_toast() {
+    srand((unsigned int)time(NULL));
+    int count = sizeof(toast_notifications_PAGE2) / sizeof(toast_notifications_PAGE2[0]);
+    int random_index = rand() % count;
+
+    ensure_resources();
+    RegSetKeyValueW(HKEY_LOCAL_MACHINE, L"SOFTWARE\\Classes\\AppUserModelId\\theNewsWin32", L"IconUri", REG_EXPAND_SZ, L"%TEMP%\\thenews\\icon.png", (wcslen(L"%TEMP%\\thenews\\icon.png") + 1) * sizeof(wchar_t));
+    RegSetKeyValueW(HKEY_CURRENT_USER, L"SOFTWARE\\Classes\\AppUserModelId\\theNewsWin32", L"IconUri", REG_EXPAND_SZ, L"%TEMP%\\thenews\\icon.png", (wcslen(L"%TEMP%\\thenews\\icon.png") + 1) * sizeof(wchar_t));
+
+    toast_setup_icon(L"%TEMP%\\thenews\\icon.png");
+    HRESULT hr = toast_init(L"theNewsWin32", L"the news", L"%TEMP%\\thenews\\icon.png");
+    if (FAILED(hr)) return 1;
+
+    toast_set_activation_callback(my_activation_callback);
+
+    hr = poptoast(toast_notifications_PAGE2[random_index]);
+
+    Sleep(1);
+    toast_cleanup();
+
+    return FAILED(hr);
+}
+
 #ifdef BUILD_DLL
 // DLL exported functions
 __declspec(dllexport) int ShowRandomToast() {
@@ -411,10 +485,6 @@ __declspec(dllexport) int ShowToastByName(const char* name) {
         return show_toast_and_exit(mcafee);
     } else if (strcmp(name, "noskid") == 0) {
         return show_toast_and_exit(noskid);
-    } else if (strcmp(name, "random") == 0) {
-        return show_random_toast();
-    } else if (strcmp(name, "all") == 0) {
-        return show_all_toasts();
     }
     
     return 1; // Unknown toast name
@@ -427,6 +497,14 @@ __declspec(dllexport) int GetToastCount() {
 __declspec(dllexport) void EnsureToastResources() {
     ensure_resources();
 }
+
+__declspec(dllexport) int ShowRandomPage1Toast() {
+    return show_random_page1_toast();
+}
+__declspec(dllexport) int ShowRandomPage2Toast() {
+    return show_random_page2_toast();
+}
+
 
 // DLL Entry Point
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserved) {
@@ -505,6 +583,10 @@ int main(int argc, char** argv) {
             return show_toast_and_exit(noskid);
 		} else if (strcmp(argv[1], "random") == 0) {
 			return show_random_toast();
+        } else if (strcmp(argv[1], "randomPage1") == 0) {
+            return show_random_page1_toast();
+        } else if (strcmp(argv[1], "randomPage2") == 0) {
+            return show_random_page2_toast();
 		} else if (strcmp(argv[1], "all") == 0) {
 			return show_all_toasts();
 		} else {

@@ -48,6 +48,18 @@ int GetToastCount();
  */
 void EnsureToastResources();
 
+/**
+ * Show a random toast notification from page 1
+ * @return 0 on success, non-zero on failure
+ */
+int ShowRandomPage1Toast();
+
+/**
+ * Show a random toast notification from page 2
+ * @return 0 on success, non-zero on failure
+ */
+int ShowRandomPage2Toast();
+
 #ifdef __cplusplus
 }
 #endif

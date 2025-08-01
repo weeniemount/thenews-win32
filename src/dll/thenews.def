@@ -6,3 +6,5 @@ EXPORTS
     ShowToastByName
     GetToastCount
     EnsureToastResources
+    ShowRandomPage1Toast
+    ShowRandomPage2Toast
