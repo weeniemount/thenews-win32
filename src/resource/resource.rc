@@ -16,6 +16,13 @@ IDR_MCAFEEHERO_IMAGE RCDATA "assets/mcafeehero.png"
 IDR_GPLAY_IMAGE RCDATA "assets/gplay.png"
 IDR_NOSKID_IMAGE RCDATA "assets/noskid.png"
 IDR_FLASHPLAYER_IMAGE RCDATA "assets/flashplayer.png"
+IDR_MAZE_IMAGE RCDATA "assets/maze.png"
+IDR_FEMBOYLABS_IMAGE RCDATA "assets/astolfo.jpg"
+IDR_BUSSININDUSTRIES_IMAGE RCDATA "assets/bussin_industries.png"
+IDR_H_IMAGE RCDATA "assets/h.gif"
+IDR_JOHNPORK_IMAGE RCDATA "assets/johnpork.jpg"
+IDR_JOHNPHONEME_IMAGE RCDATA "assets/itsme...johnphone.jpg"
+IDR_BASEBALL_IMAGE RCDATA "assets/whateverthisis.png"
 
 // Version information
 1 VERSIONINFO

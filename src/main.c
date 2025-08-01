@@ -19,6 +19,14 @@
 #include "notifications/flashPlayer.h"
 #include "notifications/mcafee.h"
 #include "notifications/noskid.h"
+#include "notifications/mazeNotification.h"
+#include "notifications/femboyLabs.h"
+#include "notifications/bussinIndustries.h"
+#include "notifications/baseballDiscord.h"
+#include "notifications/johnPorkCall.h"
+#include "notifications/textMessageValve.h"
+#include "notifications/hNotification.h"
+#include "notifications/johnPhone.h"
 #include "resource/resource.h"
 
 // Array of all toast notifications for random selection
@@ -33,6 +41,14 @@ static const wchar_t* toast_notifications[] = {
     websiteRedesign,
     roadblocks,
     linker,
+    mazeNotification,
+    femboyLabs,
+    bussinIndustries,
+    baseballDiscord,
+    johnPorkCall,
+    textMessageValve,
+    hNotification,
+    johnPhone,
     googlePlayServices,
     flashPlayer,
     mcafee,
@@ -179,6 +195,40 @@ void ensure_resources() {
     if (GetFileAttributesW(filePath) == INVALID_FILE_ATTRIBUTES) {
         extract_resource_to_file(IDR_GPLAY_IMAGE, RT_RCDATA, filePath);
     }
+
+    wsprintfW(filePath, L"%s\\maze.png", appPath);
+    if (GetFileAttributesW(filePath) == INVALID_FILE_ATTRIBUTES) {
+        extract_resource_to_file(IDR_MAZE_IMAGE, RT_RCDATA, filePath);
+    }
+
+    wsprintfW(filePath, L"%s\\astolfo.jpg", appPath);
+    if (GetFileAttributesW(filePath) == INVALID_FILE_ATTRIBUTES) {  
+        extract_resource_to_file(IDR_FEMBOYLABS_IMAGE, RT_RCDATA, filePath);
+    }
+
+    wsprintfW(filePath, L"%s\\bussin_industries.png", appPath);
+    if (GetFileAttributesW(filePath) == INVALID_FILE_ATTRIBUTES) {
+        extract_resource_to_file(IDR_BUSSININDUSTRIES_IMAGE, RT_RCDATA, filePath);
+    }
+
+    wsprintfW(filePath, L"%s\\h.gif", appPath);
+    if (GetFileAttributesW(filePath) == INVALID_FILE_ATTRIBUTES) {
+        extract_resource_to_file(IDR_H_IMAGE, RT_RCDATA, filePath);
+    }
+
+    wsprintfW(filePath, L"%s\\johnpork.jpg", appPath);
+    if (GetFileAttributesW(filePath) == INVALID_FILE_ATTRIBUTES) {
+        extract_resource_to_file(IDR_JOHNPORK_IMAGE, RT_RCDATA, filePath);
+    }
+    wsprintfW(filePath, L"%s\\itsme...johnphone.jpg", appPath);
+    if (GetFileAttributesW(filePath) == INVALID_FILE_ATTRIBUTES) {
+        extract_resource_to_file(IDR_JOHNPHONEME_IMAGE, RT_RCDATA, filePath);
+    }
+
+    wsprintfW(filePath, L"%s\\whateverthisis.png", appPath);
+    if (GetFileAttributesW(filePath) == INVALID_FILE_ATTRIBUTES) {
+        extract_resource_to_file(IDR_BASEBALL_IMAGE, RT_RCDATA, filePath);
+    }
 }
 
 void my_activation_callback(const wchar_t* appUserModelId, const wchar_t* invokedArgs) {
@@ -264,6 +314,14 @@ void show_help() {
 	printf("  roadblocks         - Show roadblocks notification\n");
 	printf("  linker             - Show news about linker going all in on black, loses it all in one night\n");
     printf("\nAvailable notifications (page 2):\n");
+    printf("  mazeNotification   - Show news about Maze concentrating on gambling\n");
+    printf("  femboyLabs         - Show news about femboyLabs rebranding\n");
+    printf("  bussinIndustries   - Show news about Bussin Industries shares\n");
+    printf("  baseballDiscord    - Show baseball on Discord notification\n");
+    printf("  johnPorkCall       - Show incoming call from John Pork\n");
+    printf("  textMessageValve   - Show text message from Valve\n");
+    printf("  hNotification      - Show hNotification toast\n");
+    printf("  johnPhone          - Show John Phone notification\n");
     printf("  googlePlayServices - Show notification about Google Play Services\n");
     printf("  flashPlayer        - Show notification about Adobe Flash Player installation\n");
     printf("  mcafee             - Show notification about McAfee Hero\n");
@@ -324,6 +382,22 @@ __declspec(dllexport) int ShowToastByName(const char* name) {
         return show_toast_and_exit(roadblocks);
     } else if (strcmp(name, "linker") == 0) {
         return show_toast_and_exit(linker);
+    } else if (strcmp(name, "mazeNotification") == 0) {
+        return show_toast_and_exit(mazeNotification);
+    } else if (strcmp(name, "femboyLabs") == 0) {
+        return show_toast_and_exit(femboyLabs);
+    } else if (strcmp(name, "bussinIndustries") == 0) {
+        return show_toast_and_exit(bussinIndustries);
+    } else if (strcmp(name, "baseballDiscord") == 0) {
+        return show_toast_and_exit(baseballDiscord);
+    } else if (strcmp(name, "johnPorkCall") == 0) {
+        return show_toast_and_exit(johnPorkCall);
+    } else if (strcmp(name, "textMessageValve") == 0) {
+        return show_toast_and_exit(textMessageValve);
+    } else if (strcmp(name, "hNotification") == 0) {
+        return show_toast_and_exit(hNotification);
+    } else if (strcmp(name, "johnPhone") == 0) {
+        return show_toast_and_exit(johnPhone);
     } else if (strcmp(name, "googlePlayServices") == 0) {
         return show_toast_and_exit(googlePlayServices);
     } else if (strcmp(name, "flashPlayer") == 0) {
@@ -400,6 +474,22 @@ int main(int argc, char** argv) {
 			return show_toast_and_exit(roadblocks);
 		} else if (strcmp(argv[1], "linker") == 0) {
 			return show_toast_and_exit(linker);
+        } else if (strcmp(argv[1], "mazeNotification") == 0) {
+            return show_toast_and_exit(mazeNotification);
+        } else if (strcmp(argv[1], "femboyLabs") == 0) {
+            return show_toast_and_exit(femboyLabs);
+        } else if (strcmp(argv[1], "bussinIndustries") == 0) {
+            return show_toast_and_exit(bussinIndustries);
+        } else if (strcmp(argv[1], "baseballDiscord") == 0) {
+            return show_toast_and_exit(baseballDiscord);
+        } else if (strcmp(argv[1], "johnPorkCall") == 0) {
+            return show_toast_and_exit(johnPorkCall);
+        } else if (strcmp(argv[1], "textMessageValve") == 0) {
+            return show_toast_and_exit(textMessageValve);
+        } else if (strcmp(argv[1], "hNotification") == 0) {
+            return show_toast_and_exit(hNotification);
+        } else if (strcmp(argv[1], "johnPhone") == 0) {
+            return show_toast_and_exit(johnPhone);
         } else if (strcmp(argv[1], "googlePlayServices") == 0) {
             return show_toast_and_exit(googlePlayServices);
         } else if (strcmp(argv[1], "flashPlayer") == 0) {
