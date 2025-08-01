@@ -378,8 +378,6 @@ int main(int argc, char** argv) {
 		if (strcmp(argv[1], "help") == 0) {
 			show_help();
 			return 0;
-		} else if (strcmp(argv[1], "random") == 0) {
-			return show_random_toast();
 		} else if (strcmp(argv[1], "someoneDied") == 0) {
 			return show_toast_and_exit(someoneDied);
 		} else if (strcmp(argv[1], "plzDonate") == 0) {
