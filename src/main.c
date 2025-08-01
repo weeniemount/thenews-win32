@@ -229,6 +229,11 @@ void ensure_resources() {
     if (GetFileAttributesW(filePath) == INVALID_FILE_ATTRIBUTES) {
         extract_resource_to_file(IDR_BASEBALL_IMAGE, RT_RCDATA, filePath);
     }
+
+    wsprintfW(filePath, L"%s\\send.png", appPath);
+    if (GetFileAttributesW(filePath) == INVALID_FILE_ATTRIBUTES) {
+        extract_resource_to_file(IDR_SEND_IMAGE, RT_RCDATA, filePath);
+    }
 }
 
 void my_activation_callback(const wchar_t* appUserModelId, const wchar_t* invokedArgs) {

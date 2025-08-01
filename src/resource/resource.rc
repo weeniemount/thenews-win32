@@ -23,6 +23,7 @@ IDR_H_IMAGE RCDATA "assets/h.gif"
 IDR_JOHNPORK_IMAGE RCDATA "assets/johnpork.jpg"
 IDR_JOHNPHONEME_IMAGE RCDATA "assets/itsme...johnphone.jpg"
 IDR_BASEBALL_IMAGE RCDATA "assets/whateverthisis.png"
+IDR_SEND_IMAGE RCDATA "assets/send.png"
 
 // Version information
 1 VERSIONINFO
