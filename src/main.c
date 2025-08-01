@@ -216,6 +216,8 @@ int show_random_toast() {
 
 int show_toast_and_exit(const wchar_t* toast_xml) {
 	HRESULT hr;
+	ensure_resources();
+    
 	toast_setup_icon(L"%TEMP%\\thenews\\icon.png");
 	hr = toast_init(L"theNewsWin32", L"the news", L"%TEMP%\\thenews\\icon.png");
 	if (FAILED(hr)) return 1;
@@ -227,6 +229,8 @@ int show_toast_and_exit(const wchar_t* toast_xml) {
 }
 
 int show_all_toasts() {
+	ensure_resources();
+	
 	toast_setup_icon(L"%TEMP%\\thenews\\icon.png");
 	HRESULT hr = toast_init(L"theNewsWin32", L"the news", L"%TEMP%\\thenews\\icon.png");
 	if (FAILED(hr)) return 1;
