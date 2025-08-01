@@ -334,8 +334,10 @@ void show_help() {
 	printf("Available commands:\n");
 	printf("  help               - Show this help message\n");
 	printf("  random             - Show a random toast notification\n");
+    printf("  randomPage1        - Show a random page 1 toast notification\n");
+    printf("  randomPage2        - Show a random page 2 toast notification\n");
 	printf("  all                - Show all notifications\n\n");
-    printf("\nAvailable notifications (page 1):\n");
+    printf("Available notifications (page 1):\n");
 	printf("  someoneDied        - Show breaking news about someone dying\n");
 	printf("  plzDonate          - Show a donation request\n");
 	printf("  plzDonate2         - Show a second donation request\n");

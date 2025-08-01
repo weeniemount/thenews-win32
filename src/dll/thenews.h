@@ -32,7 +32,11 @@ int ShowAllToasts();
  * @param name Name of the toast notification
  * Available names: "someoneDied", "plzDonate", "plzDonate2", "systemDelete", 
  *                  "johnCall", "weather", "johnFQ", "websiteRedesign", 
- *                  "roadblocks", "linker", "random", "all"
+ *                  "roadblocks", "linker", "mazeNotification",
+ *                  "femboyLabs", "bussinIndustries", "baseballDiscord,
+ *                  "johnPorkCall", "textMessageValve", "hNotification",
+ *                  "johnPhone", "googlePlayServices", "flashPlayer",
+ *                  "mcafee", "noskid"
  * @return 0 on success, non-zero on failure
  */
 int ShowToastByName(const char* name);
