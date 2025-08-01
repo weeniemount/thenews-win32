@@ -6,7 +6,7 @@ const wchar_t baseballDiscord[] =
 L"<toast launch=\"action=viewPhoto&amp;photoId=92187\">\r\n"
 L"  <visual>\r\n"
 L"    <binding template=\"ToastGeneric\">\r\n"
-L"      <text>&#9917;&#65039; Baseball on Discord?! &#129327;</text>\r\n"
+L"      <text>&#9918;&#65039; Baseball on Discord?! &#129327;</text>\r\n"
 L"      <text>Fr fr, a baseball emoji just dropped on Discord. Icl, ts kinda mogging ngl. &#129315;</text>\r\n"
 L"      <image src=\"file:///%TEMP%/thenews/whateverthisis.png\"/>\r\n"
 L"    </binding>\r\n"
