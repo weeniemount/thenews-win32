@@ -217,7 +217,7 @@ int show_random_toast() {
 int show_toast_and_exit(const wchar_t* toast_xml) {
 	HRESULT hr;
 	ensure_resources();
-    
+
 	toast_setup_icon(L"%TEMP%\\thenews\\icon.png");
 	hr = toast_init(L"theNewsWin32", L"the news", L"%TEMP%\\thenews\\icon.png");
 	if (FAILED(hr)) return 1;
@@ -345,40 +345,6 @@ __declspec(dllexport) int GetToastCount() {
 
 __declspec(dllexport) void EnsureToastResources() {
     ensure_resources();
-}
-
-// RunDLL32 compatible wrapper functions
-__declspec(dllexport) void CALLBACK RunDLL32_ShowRandomToast(HWND hwnd, HINSTANCE hinst, LPSTR lpszCmdLine, int nCmdShow) {
-    ShowRandomToast();
-}
-
-__declspec(dllexport) void CALLBACK RunDLL32_ShowAllToasts(HWND hwnd, HINSTANCE hinst, LPSTR lpszCmdLine, int nCmdShow) {
-    ShowAllToasts();
-}
-
-__declspec(dllexport) void CALLBACK RunDLL32_ShowToastByName(HWND hwnd, HINSTANCE hinst, LPSTR lpszCmdLine, int nCmdShow) {
-    // lpszCmdLine contains the command line arguments
-    if (lpszCmdLine && strlen(lpszCmdLine) > 0) {
-        // Remove quotes if present
-        char* name = lpszCmdLine;
-        if (name[0] == '"') {
-            name++;
-            char* end = strrchr(name, '"');
-            if (end) *end = '\0';
-        }
-        ShowToastByName(name);
-    } else {
-        ShowRandomToast(); // Default to random if no name provided
-    }
-}
-
-__declspec(dllexport) void CALLBACK RunDLL32_ShowToastByIndex(HWND hwnd, HINSTANCE hinst, LPSTR lpszCmdLine, int nCmdShow) {
-    if (lpszCmdLine && strlen(lpszCmdLine) > 0) {
-        int index = atoi(lpszCmdLine);
-        ShowToastByIndex(index);
-    } else {
-        ShowRandomToast(); // Default to random if no index provided
-    }
 }
 
 // DLL Entry Point
