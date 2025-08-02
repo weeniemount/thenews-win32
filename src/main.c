@@ -274,10 +274,27 @@ unsigned int generate_seed() {
 	QueryPerformanceFrequency(&frequency);
 
 	DWORD pid = GetCurrentProcessId();
+	DWORD tid = GetCurrentThreadId();
 	DWORD tick = GetTickCount();
 	time_t now = time(NULL);
 
-	return (unsigned int)(counter.QuadPart ^ frequency.QuadPart ^ pid ^ tick ^ now);
+	FILETIME ft;
+	GetSystemTimeAsFileTime(&ft);
+
+	int local_var = 0;
+
+	// Combine all the entropy sources with XOR
+	return (unsigned int)(
+		counter.QuadPart ^
+		frequency.QuadPart ^
+		pid ^
+		tid ^
+		tick ^
+		now ^
+		*((DWORD*)&ft) ^    // low 32 bits of FILETIME
+		*((DWORD*)&ft + 1) ^// high 32 bits of FILETIME
+		(size_t)&local_var  // stack address as entropy
+	);
 }
 
 // Random toast function - randomly selects one of the available toasts
