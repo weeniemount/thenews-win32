@@ -268,10 +268,21 @@ void my_activation_callback(const wchar_t* appUserModelId, const wchar_t* invoke
 	return;
 }
 
+unsigned int generate_seed() {
+    LARGE_INTEGER counter, frequency;
+	QueryPerformanceCounter(&counter);
+	QueryPerformanceFrequency(&frequency);
+
+	DWORD pid = GetCurrentProcessId();
+	DWORD tick = GetTickCount();
+	time_t now = time(NULL);
+
+	return (unsigned int)(counter.QuadPart ^ frequency.QuadPart ^ pid ^ tick ^ now);
+}
+
 // Random toast function - randomly selects one of the available toasts
 int show_random_toast() {
-    // Initialize random seed
-    srand((unsigned int)time(NULL));
+    srand(generate_seed());
     
     // Select random toast
     int random_index = rand() % toast_count;
@@ -365,7 +376,8 @@ void show_help() {
 }
 
 int show_random_page1_toast() {
-    srand((unsigned int)time(NULL));
+    srand(generate_seed());
+
     int count = sizeof(toast_notifications_PAGE1) / sizeof(toast_notifications_PAGE1[0]);
     int random_index = rand() % count;
 
@@ -388,7 +400,8 @@ int show_random_page1_toast() {
 }
 
 int show_random_page2_toast() {
-    srand((unsigned int)time(NULL));
+    srand(generate_seed());
+
     int count = sizeof(toast_notifications_PAGE2) / sizeof(toast_notifications_PAGE2[0]);
     int random_index = rand() % count;
 
@@ -514,7 +527,7 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserv
         case DLL_PROCESS_ATTACH:
             // Initialize when DLL is loaded
             g_hModule = hModule;
-            srand((unsigned int)time(NULL));
+            srand(generate_seed());
             break;
         case DLL_THREAD_ATTACH:
         case DLL_THREAD_DETACH:
